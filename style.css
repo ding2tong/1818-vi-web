@@ -1,0 +1,234 @@
+:root {
+  /* Colors - Japanese Minimal / Zen Palette */
+  --primary: #1e293b;
+  --accent: #0891b2;
+  --bg-main: #ffffff;
+  --bg-sub: #f8fafc;
+  --border-thin: #e2e8f0;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  
+  /* Spacing */
+  --spacing-base: 3rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans JP', -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .serif {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Layout - Mobile First */
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+section {
+  padding: var(--spacing-base) 0;
+}
+
+/* Japanese Elements */
+.vertical-text {
+  display: none; /* Hidden on mobile */
+}
+
+/* Style Components */
+.line-card {
+  border: 1px solid var(--border-thin);
+  padding: 2rem;
+  background: white;
+  transition: border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: -1px; /* Overlap borders for grid look */
+}
+
+.line-card:hover {
+  border-color: var(--primary);
+  z-index: 1;
+}
+
+.line-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background: var(--primary);
+  transition: height 0.3s ease;
+}
+
+.line-card:hover::after {
+  height: 100%;
+}
+
+.badge-minimal {
+  display: inline-block;
+  border: 1px solid var(--primary);
+  padding: 0.2rem 0.75rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+/* Button */
+.btn-line {
+  display: inline-block;
+  border: 1px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  padding: 0.875rem 2rem;
+  font-size: 0.875rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%; /* Full width on mobile */
+  text-align: center;
+}
+
+.btn-line:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* Pricing Table - Stacked on tiny screens, scrollable on mobile */
+.table-container {
+  overflow-x: auto;
+  margin-top: 2rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 500px; /* Force scroll if too narrow */
+}
+
+.pricing-table th {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--primary);
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1rem;
+}
+
+.pricing-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-thin);
+  font-size: 0.875rem;
+}
+
+.total-row {
+  border-top: 2px solid var(--primary);
+  font-weight: 700;
+  background: var(--bg-sub);
+}
+
+.total-row td {
+  padding: 1.5rem 1rem;
+  font-size: 1.25rem;
+  font-family: 'Noto Serif JP', serif;
+}
+
+/* Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Header Banner */
+.header-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.header-banner-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.header-banner-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%) brightness(95%);
+}
+
+.header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.9) 30%, rgba(255, 255, 255, 0.2) 100%);
+  z-index: 0;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Tablet & Desktop Adjustments (Desktop First overrides are avoided) */
+@media (min-width: 768px) {
+  .header-hero { min-height: 80vh; }
+  .header-overlay {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 40%, rgba(255, 255, 255, 0.1) 100%);
+  }
+  :root { --spacing-base: 6rem; }
+  
+  .container { padding: 0 2rem; }
+  
+  .vertical-text {
+    display: block;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: 'Noto Serif JP', serif;
+    color: var(--border-thin);
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.875rem;
+    user-select: none;
+  }
+  
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .btn-line { width: auto; padding: 1rem 3rem; }
+  
+  .line-card { padding: 2.5rem; }
+  
+  .pricing-table td, .pricing-table th { padding: 1.5rem 1rem; }
+  .total-row td { font-size: 1.5rem; }
+}
