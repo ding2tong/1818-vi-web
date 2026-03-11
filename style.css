@@ -1,15 +1,17 @@
 :root {
-  /* Colors - Japanese Minimal / Zen Palette */
-  --primary: #1e293b;
-  --accent: #0891b2;
+  /* Colors - Nuanced Japanese Minimal / Zen Palette */
+  --primary: #1a1c1e; /* Deep obsidian */
+  --accent: #2c3e50;
   --bg-main: #ffffff;
-  --bg-sub: #f8fafc;
-  --border-thin: #e2e8f0;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
+  --bg-sub: #fafaf9; /* Warm paper gray */
+  --border-thin: #e5e5e0;
+  --text-main: #1a1c1e;
+  --text-muted: #71716a;
+  --primary-rgb: 26, 28, 30;
   
-  /* Spacing */
-  --spacing-base: 3rem;
+  /* Spacing & Rhythm */
+  --spacing-section: 8rem;
+  --container-max: 860px;
 }
 
 * {
@@ -19,178 +21,293 @@
 }
 
 body {
-  font-family: 'Noto Sans JP', -apple-system, sans-serif;
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-color: var(--bg-main);
   color: var(--text-main);
-  line-height: 1.8;
-  letter-spacing: 0.02em;
+  line-height: 1.75;
+  letter-spacing: 0.015em;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, .serif {
-  font-family: 'Noto Serif JP', serif;
+  font-family: 'Noto Serif JP', "Songti TC", serif;
   font-weight: 600;
+  line-height: 1.3;
   letter-spacing: -0.01em;
 }
 
-/* Layout - Mobile First */
+/* Layout */
 .container {
   width: 100%;
-  max-width: 900px;
+  max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
 }
 
 section {
-  padding: var(--spacing-base) 0;
+  padding: var(--spacing-section) 0;
 }
 
-/* Japanese Elements */
+/* Typography Helpers */
+.text-xs { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+.text-sm { font-size: 0.875rem; color: var(--text-muted); }
+.serif-italic { font-style: italic; font-family: 'Noto Serif JP', serif; }
+
+/* Components */
+.badge-minimal {
+  display: inline-block;
+  border-bottom: 1px solid var(--primary);
+  padding: 0 0 0.2rem 0;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
 .vertical-text {
-  display: none; /* Hidden on mobile */
+  display: none;
 }
 
-/* Style Components */
+/* Cards & Grid */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
 .line-card {
-  border: 1px solid var(--border-thin);
-  padding: 2rem;
-  background: white;
-  transition: border-color 0.3s ease;
+  padding: 2.5rem;
+  background: var(--bg-sub);
+  border: 1px solid transparent;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative;
-  overflow: hidden;
-  margin-bottom: -1px; /* Overlap borders for grid look */
-}
-
-.line-card:hover {
-  border-color: var(--primary);
-  z-index: 1;
-}
-
-.line-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 0;
-  background: var(--primary);
-  transition: height 0.3s ease;
-}
-
-.line-card:hover::after {
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
-.badge-minimal {
-  display: inline-block;
-  border: 1px solid var(--primary);
-  padding: 0.2rem 0.75rem;
-  font-size: 0.7rem;
-  text-transform: uppercase;
+.line-card:hover {
+  background: white;
+  border-color: var(--border-thin);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+}
+
+.line-card-number {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.75rem;
+  color: var(--text-muted);
   margin-bottom: 1.5rem;
-  font-weight: 500;
+  opacity: 0.5;
+}
+
+.line-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.line-card h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 1px;
+  background: var(--border-thin);
+  transition: width 0.3s ease;
+}
+
+.line-card:hover h3::after {
+  width: 60px;
+  background: var(--primary);
+}
+
+.line-card ul {
+  list-style: none;
+}
+
+.line-card li {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.line-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.75em;
+  width: 4px;
+  height: 1px;
+  background: var(--text-muted);
+  opacity: 0.5;
 }
 
 /* Button */
 .btn-line {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--primary);
-  background: transparent;
-  color: var(--primary);
-  padding: 0.875rem 2rem;
+  background: var(--primary);
+  color: white;
+  padding: 1rem 3rem;
   font-size: 0.875rem;
+  letter-spacing: 0.1em;
   text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%; /* Full width on mobile */
-  text-align: center;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  font-weight: 500;
 }
 
 .btn-line:hover {
-  background: var(--primary);
-  color: white;
+  background: transparent;
+  color: var(--primary);
+  box-shadow: 0 10px 25px rgba(var(--primary-rgb), 0.1);
 }
 
-/* Pricing Section - Modern & Responsive */
+/* Header */
+.header-hero {
+  padding: 8rem 0 4rem;
+  background-color: white;
+}
+
+.header-content h1 {
+  margin: 1.5rem 0 2.5rem;
+  color: var(--text-main);
+}
+
+.header-content p {
+  color: var(--text-muted);
+  max-width: 520px;
+  line-height: 2;
+}
+
+.title-line {
+  height: 1px;
+  width: 60px;
+  background: var(--primary);
+  margin: 3rem 0;
+}
+
+/* Pricing Section */
 .pricing-summary {
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .pricing-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 0;
+  padding: 1.5rem 0;
   border-bottom: 1px solid var(--border-thin);
   font-size: 0.9375rem;
-  transition: padding 0.3s ease;
-}
-
-.pricing-item:last-child {
-  border-bottom: none;
 }
 
 .pricing-label {
-  color: var(--text-main);
-  font-weight: 500;
-}
-
-.pricing-amount {
   color: var(--text-muted);
-  font-family: 'Noto Serif JP', serif;
+  font-weight: 400;
 }
 
 .total-card {
-  margin-top: 2rem;
-  padding: 1.5rem 0;
-  border-bottom: 2px solid var(--primary);
-  text-align: right;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--primary);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
 
 .total-title {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.2em;
 }
 
 .total-price {
-  font-size: 1.75rem;
+  font-size: 2rem;
   color: var(--primary);
   font-family: 'Noto Serif JP', serif;
-  font-weight: 700;
+  font-weight: 600;
+}
+
+/* Footer */
+footer {
+  padding: 8rem 0 4rem;
+  border-top: 1px solid var(--border-thin);
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.footer-brand h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 /* Animations */
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Header Banner */
-.header-hero {
-  position: relative;
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.header-content {
-  position: relative;
-  z-index: 1;
-}
-
-/* Tablet & Desktop Adjustments (Desktop First overrides are avoided) */
+/* Media Queries */
 @media (min-width: 768px) {
-  .header-hero { min-height: 40vh; }
-  :root { --spacing-base: 6rem; }
+  :root {
+    --spacing-section: 12rem;
+    --container-max: 960px;
+  }
   
-  .container { padding: 0 2rem; }
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
   
+  .line-card {
+    border: 0.5px solid var(--border-thin);
+    margin: -0.25px; /* Share borders */
+  }
+  
+  .header-hero {
+    padding: 12rem 0 6rem;
+  }
+  
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  .total-price {
+    font-size: 2.75rem;
+  }
+
   .vertical-text {
     display: block;
     writing-mode: vertical-rl;
@@ -198,23 +315,12 @@ section {
     font-family: 'Noto Serif JP', serif;
     color: var(--border-thin);
     position: absolute;
-    right: 2rem;
+    right: 3rem;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 0.875rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
     user-select: none;
+    opacity: 0.5;
   }
-  
-  .grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .btn-line { width: auto; padding: 1rem 3rem; }
-  
-  .line-card { padding: 2.5rem; }
-  
-  .pricing-item { padding: 1.5rem 0; }
-  .total-card { padding: 2rem 0; margin-top: 3rem; }
-  .total-price { font-size: 2.25rem; }
 }
