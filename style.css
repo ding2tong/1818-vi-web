@@ -111,43 +111,71 @@ section {
   color: white;
 }
 
-/* Pricing Table - Stacked on tiny screens, scrollable on mobile */
-.table-container {
-  overflow-x: auto;
+/* Pricing Section - Modern & Responsive */
+.pricing-summary {
   margin-top: 2rem;
-  -webkit-overflow-scrolling: touch;
 }
 
-.pricing-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 500px; /* Force scroll if too narrow */
-}
-
-.pricing-table th {
-  padding: 1rem;
-  text-align: left;
-  border-bottom: 2px solid var(--primary);
-  font-family: 'Noto Serif JP', serif;
-  font-size: 1rem;
-}
-
-.pricing-table td {
-  padding: 1rem;
+.pricing-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 0;
   border-bottom: 1px solid var(--border-thin);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
+  transition: padding 0.3s ease;
 }
 
-.total-row {
-  border-top: 2px solid var(--primary);
-  font-weight: 700;
-  background: var(--bg-sub);
+.pricing-item:last-child {
+  border-bottom: none;
 }
 
-.total-row td {
-  padding: 1.5rem 1rem;
-  font-size: 1.25rem;
+.pricing-label {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.pricing-amount {
+  color: var(--text-muted);
   font-family: 'Noto Serif JP', serif;
+}
+
+.total-card {
+  margin-top: 3rem;
+  padding: 2.5rem;
+  background: white;
+  border: 1px solid var(--primary);
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.total-card::before {
+  content: "TOTAL";
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: white;
+  font-size: 0.625rem;
+  padding: 0.2rem 1rem;
+  letter-spacing: 0.2em;
+}
+
+.total-title {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.total-price {
+  font-size: 2.5rem;
+  color: var(--primary);
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 700;
 }
 
 /* Animations */
@@ -229,6 +257,7 @@ section {
   
   .line-card { padding: 2.5rem; }
   
-  .pricing-table td, .pricing-table th { padding: 1.5rem 1rem; }
-  .total-row td { font-size: 1.5rem; }
+  .pricing-item { padding: 1.5rem 0; }
+  .total-card { padding: 4rem 2.5rem; }
+  .total-price { font-size: 3.5rem; }
 }
