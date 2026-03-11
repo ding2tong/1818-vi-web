@@ -142,8 +142,7 @@ section {
 
 .total-card {
   margin-top: 2rem;
-  padding: 1.5rem 2rem;
-  background: white;
+  padding: 1.5rem 0;
   border-bottom: 2px solid var(--primary);
   text-align: right;
   display: flex;
