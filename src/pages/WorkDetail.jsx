@@ -34,8 +34,6 @@ export default function WorkDetail() {
               <span style={{ fontSize: '1.2rem', lineHeight: 1 }}>←</span> 返回作品集
             </Link>
             
-            <span className="badge-minimal">PORTFOLIO DETAIL</span>
-            
             <h1 className="serif" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: 1.2, margin: '0 0 1.25rem' }}>
               {work.title}
             </h1>
