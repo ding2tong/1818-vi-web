@@ -6,7 +6,7 @@ export default function Hero() {
           <span className="badge-minimal">PORTFOLIO & DESIGN SYSTEM</span>
           
           <div className="logo-container">
-            <img src="/乙八乙八 工作區域 1.png" alt="Logo" className="logo-img" />
+            <img src="./乙八乙八 工作區域 1.png" alt="Logo" className="logo-img" />
             <h1 style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', lineHeight: 1.1, whiteSpace: 'nowrap', margin: 0 }}>
               乙八乙八平面設計工作室
             </h1>
