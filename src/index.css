@@ -99,19 +99,22 @@ section {
 }
 
 .line-card {
-  padding: 2.5rem;
-  background: var(--bg-sub);
-  border: 1px solid transparent;
-  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  padding: 3rem 2rem;
+  background: transparent;
+  border-bottom: 0.5px solid var(--border-thin);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
+.line-card:last-child {
+  border-bottom: none;
+}
+
 .line-card:hover {
-  background: white;
-  border-color: var(--border-thin);
+  background: var(--bg-sub);
   transform: translateY(-4px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
 }
@@ -204,8 +207,19 @@ section {
   }
   
   .line-card {
-    border: 0.5px solid var(--border-thin);
-    margin: -0.25px; /* Share borders */
+    border: none;
+    border-bottom: 0.5px solid var(--border-thin);
+    padding: 3.5rem 2.5rem;
+  }
+  
+  .line-card:nth-child(odd) {
+    border-right: 0.5px solid var(--border-thin);
+  }
+
+  /* Handle last items bottom border based on 2-col layout */
+  .line-card:nth-last-child(1),
+  .line-card:nth-last-child(2):nth-child(odd) {
+    border-bottom: none;
   }
   
   .vertical-text {

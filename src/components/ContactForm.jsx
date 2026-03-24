@@ -3,7 +3,7 @@ export default function ContactForm() {
     <section style={{ backgroundColor: 'var(--bg-sub)' }}>
       <div className="container">
         <div className="reveal" style={{ marginBottom: '4rem', textAlign: 'center' }}>
-          <h2 className="serif" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>開啟專案</h2>
+          <h2 className="serif" style={{ fontSize: 'clamp(1.75rem, 5vw, 2.25rem)', marginBottom: '0.5rem', whiteSpace: 'nowrap' }}>開啟專案</h2>
           <p className="text-xs">START A PROJECT</p>
         </div>
 
@@ -29,10 +29,6 @@ export default function ContactForm() {
               <button type="submit" className="btn-line" style={{ width: '100%' }}>傳送訊息 Send Message</button>
             </div>
           </form>
-
-          <p style={{ marginTop: '2rem', fontSize: '0.75rem', color: 'var(--text-muted)', textAlign: 'center', letterSpacing: '0.05em', opacity: 0.8 }}>
-            或者透過 Calendly <a href="#" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>預約一對一免費諮詢</a>
-          </p>
         </div>
       </div>
     </section>

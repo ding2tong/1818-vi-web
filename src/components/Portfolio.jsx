@@ -18,7 +18,7 @@ export default function Portfolio() {
     <section style={{ backgroundColor: 'white' }}>
       <div className="container">
         <div className="reveal" style={{ marginBottom: '6rem', textAlign: 'center' }}>
-          <h2 className="serif" style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>專業服務項目</h2>
+          <h2 className="serif" style={{ fontSize: 'clamp(2rem, 6vw, 2.5rem)', marginBottom: '1rem', whiteSpace: 'nowrap' }}>專業服務項目</h2>
           <div style={{ height: '2px', width: '40px', background: 'var(--primary)', margin: '0 auto 1.5rem' }}></div>
           <p className="text-xs">SERVICES & EXPERTISE</p>
         </div>

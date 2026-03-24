@@ -55,7 +55,7 @@ export default function WorkDetail() {
           <div className="container" style={{ textAlign: 'left' }}>
             
             <div className="reveal" style={{ marginBottom: '4rem', textAlign: 'center' }}>
-                <h2 className="serif" style={{ fontSize: '2rem', marginBottom: '1rem' }}>方案內容包含</h2>
+                <h2 className="serif" style={{ fontSize: 'clamp(1.75rem, 5vw, 2rem)', marginBottom: '1rem', whiteSpace: 'nowrap' }}>方案內容包含</h2>
                 <div style={{ height: '2px', width: '40px', background: 'var(--primary)', margin: '0 auto 1.5rem' }}></div>
                 <p className="text-xs">WHAT WE DO</p>
             </div>
