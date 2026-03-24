@@ -116,7 +116,7 @@ export default function WorkDetail() {
           </div>
         </section>
       ) : (
-        <section style={styles.detailSection}>
+        <section style={{ padding: '4rem 0 8rem', backgroundColor: 'white' }}>
           <div className="container">
             <div className="reveal" style={{ 
               backgroundColor: 'var(--bg-sub)', 
