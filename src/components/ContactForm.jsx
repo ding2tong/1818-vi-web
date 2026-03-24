@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function ContactForm() {
   return (
     <section style={{ backgroundColor: 'var(--bg-sub)' }}>
@@ -9,7 +7,7 @@ export default function ContactForm() {
           <p className="text-xs">START A PROJECT</p>
         </div>
 
-        <div className="reveal" style={{ maxWidth: '600px', margin: '0 auto', padding: '3rem', backgroundColor: 'white', border: '1px solid var(--border-thin)', borderRadius: '4px' }}>
+        <div className="reveal contact-card">
           <form style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }} onSubmit={(e) => e.preventDefault()}>
             
             <div>

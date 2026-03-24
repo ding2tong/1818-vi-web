@@ -5,28 +5,6 @@ import { portfolioData } from '../components/Portfolio';
 import Footer from '../components/Footer';
 import ContactForm from '../components/ContactForm';
 
-const styles = {
-  headerHero: {
-    padding: '8rem 0 4rem',
-    backgroundColor: 'white'
-  },
-  h1: {
-    fontSize: 'clamp(2rem, 5vw, 3rem)', 
-    lineHeight: 1.2, 
-    margin: '0 0 1.5rem'
-  },
-  desc: {
-    color: 'var(--text-muted)',
-    maxWidth: '600px',
-    lineHeight: 2,
-    fontSize: '1.1rem'
-  },
-  detailSection: {
-    padding: '4rem 0 8rem',
-    backgroundColor: 'white'
-  }
-};
-
 export default function WorkDetail() {
   const { slug } = useParams();
   const work = portfolioData.find(item => item.slug === slug);
@@ -49,20 +27,24 @@ export default function WorkDetail() {
       </Helmet>
 
       {/* Detail Hero Section */}
-      <header style={styles.headerHero}>
+      <header className="header-hero">
         <div className="container">
           <div className="reveal">
-            <Link to="/" style={{ textDecoration: 'none', color: 'inherit', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '2.5rem', fontSize: '0.875rem' }}>
+            <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '2.5rem', fontSize: '0.875rem' }}>
               <span style={{ fontSize: '1.2rem', lineHeight: 1 }}>←</span> 返回作品集
             </Link>
             
-            <h1 className="serif" style={styles.h1}>{work.title}</h1>
+            <span className="badge-minimal">PORTFOLIO DETAIL</span>
             
-            <p style={styles.desc}>
+            <h1 className="serif" style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: 1.2, margin: '0 0 1.25rem' }}>
+              {work.title}
+            </h1>
+            
+            <p className="desc">
               {work.description}
             </p>
             
-            <div style={{ height: '1px', width: '60px', background: 'var(--primary)', margin: '3rem 0' }}></div>
+            <div className="title-line"></div>
           </div>
         </div>
       </header>

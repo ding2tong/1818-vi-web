@@ -9,8 +9,8 @@
   --text-muted: #71716a;
   --primary-rgb: 26, 28, 30;
   
-  /* Spacing & Rhythm */
-  --spacing-section: 8rem;
+  /* Spacing & Rhythm - Mobile First (Base) */
+  --spacing-section: 5rem;
   --container-max: 860px;
 }
 
@@ -62,7 +62,7 @@ h1, h2, h3, h4, .serif {
   width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
 section {
@@ -139,23 +139,63 @@ section {
   box-shadow: 0 10px 25px rgba(var(--primary-rgb), 0.1);
 }
 
-/* Animations - Handled partially in React */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Hero & Section Specifics - Mobile First */
+.header-hero {
+  padding: 5rem 0 3rem;
+  background-color: white;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.header-hero p {
+  color: var(--text-muted);
+  max-width: 520px;
+  line-height: 1.8;
+}
+
+.title-line {
+  height: 1px;
+  width: 60px;
+  background: var(--primary);
+  margin: 2.5rem 0;
+}
+
+/* Contact Card Mobile First */
+.contact-card {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  background-color: white;
+  border: 1px solid var(--border-thin);
+  border-radius: 4px;
+}
+
 /* Media Queries */
 @media (min-width: 768px) {
   :root {
-    --spacing-section: 12rem;
+    --spacing-section: 10rem;
     --container-max: 960px;
+  }
+  
+  .container {
+    padding: 0 2.5rem;
   }
   
   .grid-2 {
@@ -182,6 +222,31 @@ section {
     letter-spacing: 0.3em;
     user-select: none;
     opacity: 0.5;
+  }
+
+  .header-hero {
+    padding: 8rem 0 4rem;
+  }
+
+  .logo-container {
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .logo-img {
+    height: 50px;
+  }
+
+  .header-hero p {
+    line-height: 2;
+  }
+
+  .title-line {
+    margin: 3rem 0;
+  }
+
+  .contact-card {
+    padding: 3.5rem 3rem;
   }
 }
 
